@@ -34,14 +34,17 @@ const addOrderItems = asyncHandler(async (req, res) => {
     try {
       sendEmail({
          email:req.user.email,
-         subject:'Order placed on Chitrali-Shop'
+         subject:'Order Notice'
       })
-
-      res.status(201).json(createdOrder);
+      res.status(200).json(
+        {
+          data:'email sended'
+        }
+      )
     } catch (error) {
       throw new Error('Email not send')
     }
-   
+    res.status(201).json(createdOrder);
   }
 });
 //Get Order by id

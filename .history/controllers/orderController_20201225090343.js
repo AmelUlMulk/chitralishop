@@ -34,9 +34,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
     try {
       sendEmail({
          email:req.user.email,
-         subject:'Order placed on Chitrali-Shop'
+         subject:'Order Notice'
       })
-
       res.status(201).json(createdOrder);
     } catch (error) {
       throw new Error('Email not send')

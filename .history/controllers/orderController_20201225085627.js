@@ -31,17 +31,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     });
 
     const createdOrder = await order.save();
-    try {
-      sendEmail({
-         email:req.user.email,
-         subject:'Order placed on Chitrali-Shop'
-      })
-
-      res.status(201).json(createdOrder);
-    } catch (error) {
-      throw new Error('Email not send')
-    }
-   
+    res.status(201).json(createdOrder);
   }
 });
 //Get Order by id
