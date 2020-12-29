@@ -23,10 +23,10 @@ connectDb();
 //making server parse json format
 app.use(express.json());
 //initializing server routes , passing them to express router from the main server
-app.use("/api/products", productRoutes);// everything related to products goes here
-app.use("/api/user", userRoutes);// everything related to user goes here
-app.use("/api/order", orderRoutes); //everyting related to orders go here
-app.use("/api/upload", uploadRoutes); //uploading to server goes here
+app.use("/api/products", productRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/order", orderRoutes);
+app.use("/api/upload", uploadRoutes);
 //Assigning directry name on which files will be uploaded
 const __dirname=path.resolve()
 app.use('/uploads',express.static(path.join(__dirname,'/uploads')))

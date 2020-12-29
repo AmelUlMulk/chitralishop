@@ -44,13 +44,15 @@ const addOrderItems = asyncHandler(async (req, res) => {
   }else{
     throw new Error('email not send')
   }
+      
+     
+     
     
    
   }
 });
 //Get Order by id
 const getOrderById = asyncHandler(async (req, res) => {
-  //getting order details by id and getting the user who placed that order
   const order = await Order.findById(req.params.id).populate(
     "user",
     "name email"
@@ -64,17 +66,15 @@ const getOrderById = asyncHandler(async (req, res) => {
 });
 //get orders for a particuler user
 const getOrderByUser = asyncHandler(async (req, res) => {
-  //getting all the orders placed by user
   const order = await Order.find({ user: req.user._id });
   res.json(order);
 });
-//get all orders with user details
+//get all orders
 const getAllOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({}).populate('user', 'id name');
   res.json(orders);
 });
 const updateOrdertoDelivered=asyncHandler(async(req,res)=>{
-  //admin route to update the order delivered part to true
    const order=await Order.findById(req.params.id);
     if(order){
       order.isDelivered=true,
